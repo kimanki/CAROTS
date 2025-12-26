@@ -11,6 +11,16 @@ For more detailed information, please refer to our paper.
 
 ---
 
+## Installation
+
+To install the required dependencies, run the following command:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
 ## Dataset Preparation
 
 ### Download Links
@@ -19,6 +29,7 @@ For more detailed information, please refer to our paper.
 - [PSM](https://github.com/eBay/RANSynCoders/tree/main)
 - [SMD](https://github.com/NetManAIOps/OmniAnomaly/tree/master)
 - [SMAP](https://github.com/khundman/telemanom)
+- [iTransformer](https://github.com/thuml/iTransformer)
 
 
 For the `SMD` and `SMAP` datasets, preprocessing was performed based on the script available at [OmniAnomaly's data_preprocess.py](https://github.com/NetManAIOps/OmniAnomaly/blob/master/data_preprocess.py). After preprocessing, the datasets were placed in the following directories:
@@ -49,6 +60,7 @@ Place the downloaded datasets in the `data/` directory, ensuring each dataset re
 data/
 ├── Lorenz96/
 ├── VAR/
+├── itransformer/
 ├── SWaT/
 ├── WADI/
 ├── PSM/

@@ -340,6 +340,34 @@ class VARSegLoader(TSDataset):
         return train, val, test, train_labels, val_labels, test_labels
 
 
+class TrafficSegLoader(TSDataset):
+    def __init__(self, cfg, split):
+        super(TrafficSegLoader, self).__init__(cfg, split)
+
+    def _load_data(self):
+        data_path = os.path.join(self.data_dir, 'traffic.csv')
+        df = pd.read_csv(data_path)
+        df = df.drop(columns=['date'])  # drop date column
+        data = df.values.astype(np.float32)
+
+        # Assume all data is normal, labels = 0
+        labels = np.zeros(data.shape[0])
+
+        # Split into train and test, e.g., 80% train, 20% test
+        split_point = int(0.8 * len(data))
+        train = data[:split_point]
+        test = data[split_point:]
+        train_labels = labels[:split_point]
+        test_labels = labels[split_point:]
+
+        if self.train_ratio < 1.0:
+            train, val, train_labels, val_labels = self._split_train_val(train, train_labels)
+        else:
+            val, val_labels = test.copy(), test_labels.copy()
+
+        return train, val, test, train_labels, val_labels, test_labels
+
+
 def build_dataset(cfg, split):
     dataset_name = cfg.DATA.NAME
 
@@ -351,6 +379,7 @@ def build_dataset(cfg, split):
         "WADI": WADISegLoader,
         "Lorenz96": Lorenz96SegLoader,
         "VAR": VARSegLoader,
+        "itransformer": TrafficSegLoader,
     }
 
     for key in dataset_loaders:

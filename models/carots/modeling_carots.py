@@ -68,6 +68,7 @@ class CAROTS(nn.Module):
         
         # Apply positive augmentation if enabled
         if positive_augment:
+            self.positive_augmentor.set_causal_discoverer(self.causal_discoverer)
             positive_samples = self.positive_augmentor(x_all, self.causal_discoverer.causality_mtx)
             x_all = torch.concat([x_all, positive_samples], dim=0)
         

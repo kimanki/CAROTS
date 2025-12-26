@@ -1,0 +1,2 @@
+python main.py DATA.NAME itransformer SOLVER.BASE_LR 0.001 SOLVER.WEIGHT_DECAY 0.001
+

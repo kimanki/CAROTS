@@ -5,7 +5,7 @@ _C = CN()
 # random seed number
 _C.SEED = 0
 # number of gpus per node
-_C.NUM_GPUS = 4
+_C.NUM_GPUS = 1
 _C.VISIBLE_DEVICES = 0
 _C.RESULT_DIR = 'results/'
 
@@ -13,7 +13,7 @@ _C.RESULT_DIR = 'results/'
 
 _C.DATA_LOADER = CN()
 # the number of data loading workers per gpu
-_C.DATA_LOADER.NUM_WORKERS = 4
+_C.DATA_LOADER.NUM_WORKERS = 2
 _C.DATA_LOADER.PIN_MEMORY = True
 _C.DATA_LOADER.DROP_LAST = True
 
@@ -21,7 +21,7 @@ _C.DATA_LOADER.DROP_LAST = True
 
 _C.DATA = CN()
 _C.DATA.BASE_DIR = 'data/'
-_C.DATA.NAME = 'SWaT'
+_C.DATA.NAME = 'Lorenz96'
 _C.DATA.SCALE = "standard"
 _C.DATA.WIN_SIZE = 10
 _C.DATA.TRAIN_STEP = 1
